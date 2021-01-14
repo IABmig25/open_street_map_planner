@@ -12,6 +12,8 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
     // Store the nodes you find in the RoutePlanner's start_node and end_node attributes.
     RouteModel::Node* start_node = &model.FindClosestNode(start_x, start_y);
     RouteModel::Node* end_node = &model.FindClosestNode(end_x, end_y);
+
+    std::cout<<"the value of float start_x " << start_x << "\n";
 }
 
 
@@ -22,6 +24,13 @@ RoutePlanner::RoutePlanner(RouteModel &model, float start_x, float start_y, floa
 
 float RoutePlanner::CalculateHValue(RouteModel::Node const *node) {
 
+if (node)
+{
+    std::cout << "The variable node in CalculateHvalue is not null";
+}
+else{
+    std::cout <<"The variable node is null";
+}
 float distance_h;
 distance_h = (*end_node).distance(*node);
 
@@ -48,10 +57,16 @@ if(current_node == nullptr){
     {
         std::cout <<"The variable current node in addneighbors is not null" << "\n";
     }
-(*current_node).FindNeighbors();
 
-std::cout <<"The variable current node in addneighbors is not null........................." << "\n";
-    
+
+
+std::cout << "the x value  the current_node " << current_node ->x << "\n";
+std::cout << "the y value  the current_node " << current_node ->y << "\n";
+
+current_node ->FindNeighbors();
+
+std::cout << "The find neighbors function ran succesfully";
+
 for(auto neighbor:current_node ->neighbors){
     
     //Setting the parent node to current node
@@ -66,9 +81,12 @@ for(auto neighbor:current_node ->neighbors){
     }
     
     // Calculate h and g values.
-    float h_value = RoutePlanner::CalculateHValue(current_node);
-    float g_value =  current_node->distance(*neighbor);
+    float h_v = RoutePlanner::CalculateHValue(neighbor);
+    float g_v =  current_node->distance(*neighbor);
 
+    neighbor ->h_value = h_v;
+    neighbor->g_value = g_v;
+    
     //Adding the neighbor to the open list
     open_list.push_back(neighbor);
 
@@ -156,18 +174,14 @@ std::vector<RouteModel::Node> RoutePlanner::ConstructFinalPath(RouteModel::Node 
 // - Store the final path in the m_Model.path attribute before the method exits. This path will then be displayed on the map tile.
 
 void RoutePlanner::AStarSearch() {
-    RouteModel::Node *current_node = start_node;
-
+    RouteModel::Node *current_node  = start_node;
     // TODO: Implement your solution here.
     // Use the current node to find the neighbors
-    AddNeighbors(current_node);
     
-
-    if (current_node)
-    {
-        std::cout << "The current node in A star search is not null" <<"\n";
-        std::cout <<  open_list.size() << "the size of the open_list";
-    }
+    std::cout << "The value of x in start node " <<start_node->x <<"\n";
+    std::cout << "The value of y in start node " <<start_node->y <<"\n";
+    open_list.push_back(current_node);
+    
     
     while (open_list.size()>0)
     {

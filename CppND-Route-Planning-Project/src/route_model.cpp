@@ -27,10 +27,11 @@ void RouteModel::CreateNodeToRoadHashmap() {
 
 
 RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) {
-    Node *closest_node = nullptr;
+  std::cout <<"The call to FindNeighbor           is successful";  
+  Node *closest_node = nullptr;
     Node node;
 
-    std::cout <<"The call to FindNeighbor           is successful";
+    
 
     for (int node_index : node_indices) {
         node = parent_model->SNodes()[node_index];

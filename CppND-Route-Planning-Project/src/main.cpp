@@ -76,7 +76,7 @@ int main(int argc, const char **argv)
     
     std::cout << "Enter the value for end_y " << "\n";
     //std::cin >> end_y;
-    end_y = 90.0;
+    end_y = 60.0;
     
 
     // Build Model.
