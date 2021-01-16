@@ -62,21 +62,22 @@ int main(int argc, const char **argv)
     float end_y;
 
     std::cout << "Enter the value for start_x " << "\n";
-    //std::cin >> start_x;
-    start_x = 10.0;
+    std::cin >> start_x;
+    //start_x = 10.0;
+    
     std::cout << "Enter the value for start_y " << "\n";
-    //std::cin >> start_y;
-    start_y = 10.0;
+    std::cin >> start_y;
+    //start_y = 10.0;
 
     
     std::cout << "Enter the value for end_x " << "\n";
-    //std::cin >> end_x;
-    end_x = 90.0;
+    std::cin >> end_x;
+    //end_x = 90.0;
 
     
     std::cout << "Enter the value for end_y " << "\n";
-    //std::cin >> end_y;
-    end_y = 60.0;
+    std::cin >> end_y;
+    //end_y = 60.0;
     
 
     // Build Model.

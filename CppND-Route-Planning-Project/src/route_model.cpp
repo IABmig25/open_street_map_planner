@@ -27,7 +27,7 @@ void RouteModel::CreateNodeToRoadHashmap() {
 
 
 RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) {
-  std::cout <<"The call to FindNeighbor           is successful";  
+    
   Node *closest_node = nullptr;
     Node node;
 
@@ -47,8 +47,7 @@ RouteModel::Node *RouteModel::Node::FindNeighbor(std::vector<int> node_indices) 
 
 void RouteModel::Node::FindNeighbors() {
 
-    std::cout <<"The call to FindNeighbors is successful";
-    std::cout <<  this->index << "The call to FindNeighbors is successful";
+    
     for (auto & road : parent_model->node_to_road[this->index]) {
         RouteModel::Node *new_neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
         if (new_neighbor) {
